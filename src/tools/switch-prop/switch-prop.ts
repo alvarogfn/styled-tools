@@ -1,16 +1,13 @@
-import { prop } from "./prop";
-import type { ComponentProps, ComponentPropsWithTheme, Needle } from "./types";
-import { Interpolation, StyleFunction } from "styled-components";
+import type { ComponentProps, ComponentPropsWithTheme, Interpolation, Needle, StyleFunction } from "@/shared/types.js";
+import type { Cases } from "@/tools/switch-prop/types.js";
 
-type Cases<Props extends ComponentProps> =
-  | { [key: string]: Interpolation<Props> }
-  | ((props: Props) => { [key: string]: Interpolation<Props> });
+import { prop } from "../prop/prop.js";
 
 /**
  * Switches on a given prop. Returns the value or function for a given prop value. Third parameter is default value.
  * @example
  * import styled, { css } from "styled-components";
- * import { switchProp, prop } from "styled-tools";
+ * import { switchProp, prop } from "styled-bettertools";
  *
  * const Button = styled.button`
  *   font-size: ${switchProp(prop("size", "medium"), {
@@ -40,8 +37,8 @@ export function switchProp<Props extends ComponentProps>(
 
     const finalCases = typeof cases === "function" ? cases(props) : cases;
 
-    if (value in finalCases) {
-      return finalCases[value];
+    if ((value as string) in finalCases) {
+      return finalCases[value as string];
     }
 
     return defaultCase;

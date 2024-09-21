@@ -1,21 +1,58 @@
-import prop from "../src/prop";
+import type { ComponentPropsWithTheme } from "@/shared/types.js";
 
-test("string argument", () => {
-  expect(prop("color")()).toBeUndefined();
-  expect(prop("color")({})).toBeUndefined();
-  expect(prop("color")({ color: "red" })).toBe("red");
-});
+import { describe, expect, test } from "vitest";
 
-test("deep string argument", () => {
-  expect(prop("color.primary")()).toBeUndefined();
-  expect(prop("color.primary")({})).toBeUndefined();
-  expect(prop("color.primary")({ color: {} })).toBeUndefined();
-  expect(prop("color.primary")({ color: { primary: "red" } })).toBe("red");
-});
+import { prop } from "./prop.js";
 
-test("defaultValue", () => {
-  expect(prop("color", "red")()).toBe("red");
-  expect(prop("color", "red")({})).toBe("red");
-  expect(prop("color", "red")({ color: "blue" })).toBe("blue");
-  expect(prop("color.primary", "red")({})).toBe("red");
+function makeSut<P extends object>(path: string, props: P, defaultValue?: unknown) {
+  return prop<P>(path, defaultValue)(props as ComponentPropsWithTheme<P>);
+}
+
+const testCases = [
+  { expected: undefined, path: "color", props: {} },
+  { expected: undefined, path: "color.primary", props: {} },
+  {
+    defaultValue: "red",
+    expected: "red",
+    path: "color",
+    props: {},
+  },
+  {
+    expected: "red",
+    path: "color",
+    props: { color: "red" },
+  },
+  {
+    defaultValue: "blue",
+    expected: "blue",
+    path: "color",
+    props: {},
+  },
+  {
+    expected: { primary: "red" },
+    path: "color",
+    props: { color: { primary: "red" } },
+  },
+  {
+    expected: "red",
+    path: "color.primary",
+    props: { color: { primary: "red" } },
+  },
+  {
+    defaultValue: "blue",
+    expected: "blue",
+    path: "color.primary",
+    props: { color: { secondary: "red" } },
+  },
+];
+
+describe("[Tools]: Prop", () => {
+  describe("when called with empty props", () => {
+    test.each(testCases)(
+      "should return $expected when props $props and path $path",
+      ({ defaultValue, expected, path, props }) => {
+        expect(makeSut(path, props, defaultValue)).toStrictEqual(expected);
+      },
+    );
+  });
 });

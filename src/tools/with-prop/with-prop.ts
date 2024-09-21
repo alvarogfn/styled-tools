@@ -1,8 +1,9 @@
-import { prop } from "./prop";
-import { ComponentProps, ComponentPropsWithTheme, Needle } from "./types";
-import { Interpolation, StyleFunction } from "styled-components";
+import type { ComponentProps, ComponentPropsWithTheme, Needle } from "@/shared/types.js";
+import type { Interpolation, StyleFunction } from "styled-components";
 
-type CallbackFunction<Props extends ComponentProps, CallbackArgs extends Array<any>> = (
+import { prop } from "../prop/prop.js";
+
+type CallbackFunction<Props extends ComponentProps, CallbackArgs extends Array<unknown>> = (
   ...args: [...CallbackArgs]
 ) => Interpolation<Props>;
 
@@ -12,7 +13,7 @@ type CallbackFunction<Props extends ComponentProps, CallbackArgs extends Array<a
  * // example with polished
  * import styled from "styled-components";
  * import { darken } from "polished";
- * import { withProp, prop } from "styled-tools";
+ * import { withProp, prop } from "styled-bettertools";
  *
  * const Button = styled.button`
  *   border-color: ${withProp(prop("theme.primaryColor", "blue"), darken(0.5))};
@@ -20,7 +21,7 @@ type CallbackFunction<Props extends ComponentProps, CallbackArgs extends Array<a
  *   background: ${withProp(["foo", "bar"], (foo, bar) => `${foo}${bar}`)};
  * `;
  */
-export function withProp<Props extends ComponentProps, CallbackArgs extends Array<any>>(
+export function withProp<Props extends ComponentProps, CallbackArgs extends Array<unknown> = unknown[]>(
   needle: Needle<Props> | Needle<Props>[],
   fn: CallbackFunction<Props, CallbackArgs>,
 ): StyleFunction<Props> {

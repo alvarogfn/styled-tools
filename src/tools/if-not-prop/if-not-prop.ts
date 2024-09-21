@@ -1,12 +1,14 @@
-import { ifProp } from "./if-prop";
-import { ComponentProps, Needle } from "./types";
-import { Interpolation, StyleFunction } from "styled-components";
+import type { Interpolation, StyleFunction } from "styled-components";
+
+import type { ComponentProps, Needle } from "../../shared/types.js";
+
+import { ifProp } from "../if-prop/if-prop.js";
 
 /**
  * Returns `pass` if prop is falsy. Otherwise returns `fail`
  * @example
  * import styled from "styled-components";
- * import { ifNotProp } from "styled-tools";
+ * import { ifNotProp } from "styled-bettertools";
  *
  * const Button = styled.button`
  *   font-size: ${ifNotProp("large", "20px", "30px")};
