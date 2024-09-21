@@ -1,74 +1,82 @@
 {
-  "name": "styled-tools",
+  "name": "styled-bettertools",
   "version": "1.7.2",
-  "description": "Utilities for styled-components",
+  "description": "A fork of styled-tools with more utilities for styled-components",
   "license": "MIT",
-  "repository": "diegohaz/styled-tools",
-  "main": "dist/cjs/index.js",
-  "module": "dist/es/index.js",
-  "types": "types/index.d.ts",
+  "repository": "alvarogfn/styled-tools",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./*": {
+      "import": "./dist/tools/*/*.js",
+      "require": "./dist/tools/*/*.js",
+      "types": "./dist/tools/*/*.d.ts"
+    }
+  },
+  "type": "module",
   "author": {
     "name": "Diego Haz",
     "email": "hazdiego@gmail.com",
     "url": "https://github.com/diegohaz"
   },
+  "contributors": [
+    {
+      "name": "Alvaro Guimarães",
+      "email": "alvaro-contato@outlook.com",
+      "url": "https://github.com/alvarogfn"
+    }
+  ],
   "files": [
     "dist",
     "types"
   ],
   "scripts": {
-    "test": "jest",
-    "coverage": "npm test -- --coverage",
-    "postcoverage": "opn coverage/lcov-report/index.html",
-    "lint": "eslint src test benchmark",
-    "type-check": "tsc",
-    "flow": "flow check",
-    "benchmark": "cross-env NODE_ENV=test babel-node benchmark",
-    "docs": "documentation readme src --section=API --pe flow -c documentation.yml",
-    "clean": "rimraf dist",
-    "prebuild": "npm run docs && npm run clean",
-    "build": "npm run build:cjs && npm run build:es",
-    "build:cjs": "cross-env BABEL_ENV=cjs babel src -d dist/cjs",
-    "build:es": "cross-env BABEL_ENV=es babel src -d dist/es",
-    "prerelease": "npm run lint && npm test && npm run build",
-    "release": "standard-version",
-    "postpublish": "git push origin master --follow-tags"
+    "lint": "eslint src",
+    "build": "tsc --project tsconfig.build.json",
+    "test": "vitest",
+    "test:watch": "vitest --watch",
+    "test:coverage": "vitest --coverage",
+    "test:ci": "vitest --ci",
+    "test:types": "vitest --typecheck",
+    "changeset": "changeset",
+    "version": "changeset version",
+    "publish": "changeset publish"
   },
   "keywords": [
-    "styled-tools"
+    "styled-bettertools"
   ],
-  "dependencies": {},
+  "dependencies": {
+    "@emotion/react": "11.13.3",
+    "@types/node": "22.5.5",
+    "dot-prop": "9.0.0",
+    "styled-components": "6.1.13"
+  },
   "devDependencies": {
-    "@babel/cli": "7.2.3",
-    "@babel/core": "7.2.2",
-    "@babel/node": "7.2.2",
-    "@babel/plugin-proposal-export-default-from": "7.2.0",
-    "@babel/plugin-transform-flow-strip-types": "7.2.3",
-    "@babel/preset-env": "7.2.3",
-    "babel-core": "7.0.0-bridge.0",
-    "babel-eslint": "10.0.1",
-    "babel-jest": "23.6.0",
-    "benchmark": "2.1.4",
-    "cross-env": "5.2.0",
-    "documentation": "9.1.1",
-    "eslint": "5.12.0",
-    "eslint-config-airbnb-base": "13.1.0",
-    "eslint-config-prettier": "3.5.0",
-    "eslint-plugin-flowtype": "3.2.1",
-    "eslint-plugin-flowtype-errors": "3.6.0",
-    "eslint-plugin-import": "2.14.0",
-    "eslint-plugin-prettier": "3.0.1",
-    "flow-bin": "0.90.0",
-    "jest-cli": "23.6.0",
-    "lodash": "4.17.13",
-    "opn-cli": "4.0.0",
-    "polished": "2.3.3",
-    "prettier": "1.15.3",
-    "react": "16.7.0",
-    "react-dom": "16.7.0",
-    "rimraf": "2.6.3",
-    "standard-version": "4.4.0",
-    "styled-tools": "1.6.0",
-    "typescript": "3.2.2"
+    "@changesets/cli": "2.27.8",
+    "@eslint-community/eslint-plugin-eslint-comments": "4.4.0",
+    "@eslint/js": "9.11.0",
+    "@vitest/coverage-istanbul": "2.1.1",
+    "@vitest/ui": "2.1.1",
+    "eslint": "9.11.0",
+    "eslint-define-config": "2.1.0",
+    "eslint-plugin-array-func": "5.0.2",
+    "eslint-plugin-no-secrets": "1.0.2",
+    "eslint-plugin-perfectionist": "3.6.0",
+    "eslint-plugin-promise": "7.1.0",
+    "eslint-plugin-regexp": "2.6.0",
+    "eslint-plugin-unicorn": "55.0.0",
+    "eslint-plugin-vitest": "0.5.4",
+    "globals": "15.9.0",
+    "prettier": "3.3.3",
+    "typescript": "5.6.2",
+    "typescript-eslint": "8.6.0",
+    "vite-tsconfig-paths": "5.0.1",
+    "vitest": "2.1.1"
   }
 }

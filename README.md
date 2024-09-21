@@ -1,9 +1,7 @@
 # styled-tools 💅
 
-[![NPM version](https://img.shields.io/npm/v/styled-tools.svg?style=flat-square)](https://npmjs.org/package/styled-tools)
-[![NPM downloads](https://img.shields.io/npm/dm/styled-tools.svg?style=flat-square)](https://npmjs.org/package/styled-tools)
-[![Dependencies](https://img.shields.io/david/diegohaz/styled-tools.svg?style=flat-square)](https://david-dm.org/diegohaz/styled-tools)
-[![Build Status](https://img.shields.io/travis/diegohaz/styled-tools/master.svg?style=flat-square)](https://travis-ci.org/diegohaz/styled-tools) [![Coverage Status](https://img.shields.io/codecov/c/github/diegohaz/styled-tools/master.svg?style=flat-square)](https://codecov.io/gh/diegohaz/styled-tools/branch/master)
+[![NPM version](https://img.shields.io/npm/v/styled-bettertools.svg?style=flat-square)](https://npmjs.org/package/styled-bettertools)
+[![NPM downloads](https://img.shields.io/npm/dm/styled-bettertools.svg?style=flat-square)](https://npmjs.org/package/styled-tools)
 
 Useful interpolated functions for [styled-components](https://github.com/styled-components/styled-components) 💅, [emotion](https://github.com/emotion-js/emotion) 👩‍🎤, [JSS](https://github.com/cssinjs/jss) and other CSS-in-JS libraries.
 
@@ -11,17 +9,17 @@ Useful interpolated functions for [styled-components](https://github.com/styled-
 
 npm:
 
-    npm i styled-tools
+    npm i styled-bettertools
 
 Yarn:
 
-    yarn add styled-tools
+    yarn add styled-bettertools
 
 ## Usage
 
 ```jsx
 import styled, { css } from "styled-components";
-import { prop, ifProp, switchProp } from "styled-tools";
+import { prop, ifProp, switchProp } from "styled-bettertools";
 
 const Button = styled.button`
   color: ${prop("color", "red")};
@@ -120,7 +118,7 @@ Returns the value of `props[path]` or `defaultValue`
 
 ```javascript
 import styled from "styled-components";
-import { prop } from "styled-tools";
+import { prop } from "styled-bettertools";
 
 const Button = styled.button`
   color: ${prop("color", "red")};
@@ -143,7 +141,7 @@ Same as `prop`, except that it returns `props.theme[path]` instead of
 
 ```javascript
 import styled from "styled-components";
-import { theme } from "styled-tools";
+import { theme } from "styled-bettertools";
 
 const Button = styled.button`
  color: ${theme("button.color", "red")};
@@ -164,7 +162,7 @@ Returns `props.theme.palette[key || props.palette][tone || props.tone || 0]` or 
 
 ```javascript
 import styled, { ThemeProvider } from "styled-components";
-import { palette } from "styled-tools";
+import { palette } from "styled-bettertools";
 
 const theme = {
   palette: {
@@ -202,7 +200,7 @@ Returns `pass` if prop is truthy. Otherwise returns `fail`
 
 ```javascript
 import styled from "styled-components";
-import { ifProp, palette } from "styled-tools";
+import { ifProp, palette } from "styled-bettertools";
 
 const Button = styled.button`
   background-color: ${ifProp("transparent", "transparent", palette(0))};
@@ -227,7 +225,7 @@ Returns `pass` if prop is falsy. Otherwise returns `fail`
 
 ```javascript
 import styled from "styled-components";
-import { ifNotProp } from "styled-tools";
+import { ifNotProp } from "styled-bettertools";
 
 const Button = styled.button`
   font-size: ${ifNotProp("large", "20px", "30px")};
@@ -251,7 +249,7 @@ Calls a function passing properties values as arguments.
 // example with polished
 import styled from "styled-components";
 import { darken } from "polished";
-import { withProp, prop } from "styled-tools";
+import { withProp, prop } from "styled-bettertools";
 
 const Button = styled.button`
   border-color: ${withProp(prop("theme.primaryColor", "blue"), darken(0.5))};
@@ -276,7 +274,7 @@ Switches on a given prop. Returns the value or function for a given prop value. 
 
 ```javascript
 import styled, { css } from "styled-components";
-import { switchProp, prop } from "styled-tools";
+import {switchProp, prop} from "styled-bettertools";
 
 const Button = styled.button`
   font-size: ${switchProp(prop("size", "medium"), {
