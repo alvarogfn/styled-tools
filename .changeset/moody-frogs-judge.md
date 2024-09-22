@@ -2,7 +2,7 @@
 "styled-bettertools": minor
 ---
 
-Create a fork of styled-tools and restart releases
+Create a fork of styled-tools and restart the changelog and releases.
 
 PREVIOUS CHANGELOG:
 

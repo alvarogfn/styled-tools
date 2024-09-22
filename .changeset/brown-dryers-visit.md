@@ -1,5 +1,5 @@
 ---
-"@alvarogfn/styled-tools": major
+"styled-bettertools": minor
 ---
 
 * Rewrite all tools in typescript
