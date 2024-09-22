@@ -1,4 +1,5 @@
-import type { ComponentProps, Interpolation } from "@/shared/types.js";
+import type { ComponentProps } from "@/types/styled-types.js";
+import type { Interpolation } from "@/types/styled-types.js";
 
 export type Cases<Props extends ComponentProps> =
   | { [key: string]: Interpolation<Props> }

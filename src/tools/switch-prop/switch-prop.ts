@@ -1,5 +1,12 @@
-import type { ComponentProps, ComponentPropsWithTheme, Interpolation, Needle, StyleFunction } from "@/shared/types.js";
-import type { Cases } from "@/tools/switch-prop/types.js";
+import type {
+  ComponentProps,
+  ComponentPropsWithTheme,
+  Interpolation,
+  Needle,
+  StyleFunction,
+} from "@/types/styled-types.js";
+
+import type { Cases } from "./types.js";
 
 import { prop } from "../prop/prop.js";
 

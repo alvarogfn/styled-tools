@@ -213,7 +213,7 @@ export default defineFlatConfig([
 
   // Vitest
   {
-    files: ["**/*.test*.ts"],
+    files: ["**/*.test.ts"],
     languageOptions: {
       globals: {
         ...globals.jest,

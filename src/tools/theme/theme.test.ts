@@ -1,4 +1,4 @@
-import type { ComponentPropsWithTheme } from "@/shared/types.js";
+import type { ComponentPropsWithTheme } from "@/types/styled-types.js";
 
 import { describe, expect, it } from "vitest";
 

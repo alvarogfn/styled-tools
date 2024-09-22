@@ -1,4 +1,9 @@
-import type { ComponentProps, ComponentPropsWithTheme, StringAutoComplete, StyleFunction } from "@/shared/types.js";
+import type {
+  ComponentProps,
+  ComponentPropsWithTheme,
+  StringAutoComplete,
+  StyleFunction,
+} from "@/types/styled-types.js";
 
 import { prop } from "../prop/prop.js";
 

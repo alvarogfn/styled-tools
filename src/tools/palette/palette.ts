@@ -1,4 +1,4 @@
-import type { ComponentProps, StyleFunction } from "@/shared/types.js";
+import type { ComponentProps, StyleFunction } from "@/types/styled-types.js";
 
 import { clamp } from "@/helpers/clamp.js";
 import { toArray } from "@/helpers/to-array.js";

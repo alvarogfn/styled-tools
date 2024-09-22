@@ -1,6 +1,13 @@
-import { getProperty } from "dot-prop";
+import type {
+  ComponentProps,
+  ComponentPropsWithTheme,
+  Interpolation,
+  StringAutoComplete,
+  StyleFunction,
+} from "@/types/styled-types.js";
+import type {} from "@/types/styled-types.js";
 
-import type { ComponentProps, ComponentPropsWithTheme, StringAutoComplete, StyleFunction } from "../../shared/types.js";
+import { getProperty } from "dot-prop";
 
 /**
  * Returns the value of `props[path]` or `defaultValue`
@@ -27,15 +34,15 @@ import type { ComponentProps, ComponentPropsWithTheme, StringAutoComplete, Style
  *
  * @template Props - The type of the component's props.
  * @template Path - The type of the path to the property in the props.
- * @param {Path} path - The path to the property in the props. (Supports dot-notation for nested properties)
- * @param {unknown} [defaultValue] - The default value to return if the property is not found.
- * @returns {StyleFunction<Props>} - A function that takes the component's props and returns the property value or the default value.
+ * @param path - The path to the property in the props. (Supports dot-notation for nested properties)
+ * @param [defaultValue] - The default value to return if the property is not found.
+ * @returns A function that takes the component's props and returns the property value or the default value.
  */
 export function prop<Props extends ComponentProps, Path = StringAutoComplete<keyof Props>>(
   path: Path,
   defaultValue?: unknown,
 ): StyleFunction<Props> {
   return (props: ComponentPropsWithTheme<Props>) => {
-    return getProperty(props, String(path), defaultValue) as Omit<ReturnType<typeof getProperty>, "unknown">;
+    return getProperty(props, String(path), defaultValue) as Interpolation<Props>;
   };
 }
