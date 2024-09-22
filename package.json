@@ -1,9 +1,12 @@
 {
   "name": "styled-bettertools",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "A fork of styled-tools with more utilities for css-in-js",
   "license": "MIT",
-  "repository": "alvarogfn/styled-bettertools",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alvarogfn/styled-bettertools"
+  },
   "main": "dist/index.js",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
