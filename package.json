@@ -50,7 +50,8 @@
     "changeset": "changeset",
     "version:ci": "changeset version",
     "prepublishOnly": "pnpm build",
-    "publish:ci": "changeset publish"
+    "publish:ci": "changeset publish",
+    "prepare": "ts-patch install -s"
   },
   "keywords": [
     "styled-bettertools",
@@ -83,10 +84,12 @@
     "eslint-plugin-vitest": "0.5.4",
     "globals": "15.9.0",
     "prettier": "3.3.3",
-    "typescript": "5.6.2",
-    "typescript-eslint": "8.6.0",
-    "vite-tsconfig-paths": "5.0.1",
     "rimraf": "6.0.1",
+    "ts-patch": "3.2.1",
+    "typescript": "5.5.4",
+    "typescript-eslint": "8.6.0",
+    "typescript-transform-paths": "3.5.1",
+    "vite-tsconfig-paths": "5.0.1",
     "vitest": "2.1.1"
   }
 }
