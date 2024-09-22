@@ -1,7 +1,7 @@
 {
   "name": "styled-bettertools",
   "version": "0.0.0",
-  "description": "A fork of styled-tools with more utilities for styled-components",
+  "description": "A fork of styled-tools with more utilities for css-in-js",
   "license": "MIT",
   "repository": "alvarogfn/styled-bettertools",
   "main": "dist/index.js",
@@ -48,7 +48,11 @@
     "publish": "changeset publish"
   },
   "keywords": [
-    "styled-bettertools"
+    "styled-bettertools",
+    "styled-tools",
+    "styled-components",
+    "emotion",
+    "css-in-js"
   ],
   "dependencies": {
     "@emotion/react": "11.13.3",
