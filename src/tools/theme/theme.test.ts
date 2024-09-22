@@ -2,7 +2,7 @@ import type { ComponentPropsWithTheme } from "@/shared/types.js";
 
 import { describe, expect, it } from "vitest";
 
-import theme from "./theme.js";
+import { theme } from "./theme.js";
 
 function makeSut<Props extends object>(path: string, props: Props, defaultValue?: unknown) {
   return theme<Props>(path, defaultValue)(props as ComponentPropsWithTheme<Props>);
