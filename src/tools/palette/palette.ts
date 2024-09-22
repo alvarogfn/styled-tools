@@ -182,9 +182,9 @@ export function palette<Props extends ComponentProps>(
     const tone =
       typeof keyOrTone === "number"
         ? keyOrTone
-        : (typeof toneOrDefaultValue === "number"
+        : typeof toneOrDefaultValue === "number"
           ? toneOrDefaultValue
-          : props.tone || 0);
+          : props.tone || 0;
 
     const finalDefaultValue = toneOrDefaultValue === tone ? defaultValue : toneOrDefaultValue;
 

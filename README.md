@@ -27,9 +27,9 @@ const Button = styled.button`
   color: ${prop("color", "red")};
   font-size: ${ifProp({ size: "large" }, "20px", "14px")};
   background-color: ${switchProp("theme", {
-    dark: "blue", 
-    darker: "mediumblue", 
-    darkest: "darkblue" 
+  dark: "blue",
+  darker: "mediumblue",
+  darkest: "darkblue"
   })};
 `;
 
@@ -51,9 +51,9 @@ A more complex example:
 ```jsx
 const Button = styled.button`
   color: ${prop("theme.colors.white", "#fff")};
-  font-size: ${ifProp({ size: "large" }, prop("theme.sizes.lg", "20px"), prop("theme.sizes.md", "14px"))};
-  background-color: ${prop("theme.colors.black", "#000")};
-  
+   font-size: ${ifProp({ size: "large" }, prop("theme.sizes.lg", "20px"), prop("theme.sizes.md", "14px"))};
+   background-color: ${prop("theme.colors.black", "#000")};
+
   ${switchProp("kind", {
     dark: css`
       background-color: ${prop("theme.colors.blue", "blue")};
@@ -66,14 +66,17 @@ const Button = styled.button`
     darkest: css`
       background-color: ${prop("theme.colors.darkblue", "darkblue")};
       border: 1px solid ${prop("theme.colors.darkblue", "darkblue")};
-    `
+    `,
   })}
-  
-  ${ifProp("disabled", css`
+
+  ${ifProp(
+    "disabled",
+    css`
     background-color: ${prop("theme.colors.gray", "#999")};
     border-color: ${prop("theme.colors.gray", "#999")};
     pointer-events: none;
-  `)}
+  `,
+  )}
 `;
 ```
 
@@ -83,29 +86,29 @@ const Button = styled.button`
 
 #### Table of Contents
 
--   [prop](#prop)
-    -   [Parameters](#parameters)
-    -   [Examples](#examples)
--   [theme](#theme)
-    -   [Parameters](#parameters-1)
-    -   [Examples](#examples-1)
--   [palette](#palette)
-    -   [Parameters](#parameters-2)
-    -   [Examples](#examples-2)
--   [ifProp](#ifprop)
-    -   [Parameters](#parameters-3)
-    -   [Examples](#examples-3)
--   [ifNotProp](#ifnotprop)
-    -   [Parameters](#parameters-4)
-    -   [Examples](#examples-4)
--   [withProp](#withprop)
-    -   [Parameters](#parameters-5)
-    -   [Examples](#examples-5)
--   [switchProp](#switchprop)
-    -   [Parameters](#parameters-6)
-    -   [Examples](#examples-6)
--   [Types](#types)
-    -   [Needle](#needle)
+- [prop](#prop)
+  - [Parameters](#parameters)
+  - [Examples](#examples)
+- [theme](#theme)
+  - [Parameters](#parameters-1)
+  - [Examples](#examples-1)
+- [palette](#palette)
+  - [Parameters](#parameters-2)
+  - [Examples](#examples-2)
+- [ifProp](#ifprop)
+  - [Parameters](#parameters-3)
+  - [Examples](#examples-3)
+- [ifNotProp](#ifnotprop)
+  - [Parameters](#parameters-4)
+  - [Examples](#examples-4)
+- [withProp](#withprop)
+  - [Parameters](#parameters-5)
+  - [Examples](#examples-5)
+- [switchProp](#switchprop)
+  - [Parameters](#parameters-6)
+  - [Examples](#examples-6)
+- [Types](#types)
+  - [Needle](#needle)
 
 ### prop
 
@@ -113,8 +116,8 @@ Returns the value of `props[path]` or `defaultValue`
 
 #### Parameters
 
--   `path` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** 
--   `defaultValue` **any** 
+- `path` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)**
+- `defaultValue` **any**
 
 #### Examples
 
@@ -127,7 +130,7 @@ const Button = styled.button`
 `;
 ```
 
-Returns **PropsFn** 
+Returns **PropsFn**
 
 ### theme
 
@@ -136,8 +139,8 @@ Same as `prop`, except that it returns `props.theme[path]` instead of
 
 #### Parameters
 
--   `path` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** 
--   `defaultValue` **any** 
+- `path` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)**
+- `defaultValue` **any**
 
 #### Examples
 
@@ -146,7 +149,7 @@ import styled from "styled-components";
 import { theme } from "styled-bettertools";
 
 const Button = styled.button`
- color: ${theme("button.color", "red")};
+  color: ${theme("button.color", "red")};
 `;
 ```
 
@@ -156,9 +159,11 @@ Returns `props.theme.palette[key || props.palette][tone || props.tone || 0]` or 
 
 #### Parameters
 
--   `keyOrTone` **([string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String) \| [number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number))** 
--   `toneOrDefaultValue` **any** 
--   `defaultValue` **any** 
+- `keyOrTone` \*
+  \*([string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String) \| [number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number))
+  \*\*
+- `toneOrDefaultValue` **any**
+- `defaultValue` **any**
 
 #### Examples
 
@@ -168,24 +173,24 @@ import { palette } from "styled-bettertools";
 
 const theme = {
   palette: {
-    primary: ['#1976d2', '#2196f3', '#71bcf7', '#c2e2fb'],
-    secondary: ['#c2185b', '#e91e63', '#f06292', '#f8bbd0']
-  }
+    primary: ["#1976d2", "#2196f3", "#71bcf7", "#c2e2fb"],
+    secondary: ["#c2185b", "#e91e63", "#f06292", "#f8bbd0"],
+  },
 };
 
 const Button = styled.button`
-  color: ${palette(1)};                    // props.theme.palette[props.palette][1]
-  color: ${palette("primary", 1)};         // props.theme.palette.primary[1]
-  color: ${palette("primary")};            // props.theme.palette.primary[props.tone || 0]
-  color: ${palette("primary", -1)};        // props.theme.palette.primary[3]
-  color: ${palette("primary", 10)};        // props.theme.palette.primary[3]
-  color: ${palette("primary", -10)};       // props.theme.palette.primary[0]
-  color: ${palette("primary", 0, "red")};  // props.theme.palette.primary[0] || red
+  color: ${palette(1)}; // props.theme.palette[props.palette][1]
+  color: ${palette("primary", 1)}; // props.theme.palette.primary[1]
+  color: ${palette("primary")}; // props.theme.palette.primary[props.tone || 0]
+  color: ${palette("primary", -1)}; // props.theme.palette.primary[3]
+  color: ${palette("primary", 10)}; // props.theme.palette.primary[3]
+  color: ${palette("primary", -10)}; // props.theme.palette.primary[0]
+  color: ${palette("primary", 0, "red")}; // props.theme.palette.primary[0] || red
 `;
 
 <ThemeProvider theme={theme}>
   <Button palette="secondary" />
-</ThemeProvider>
+</ThemeProvider>;
 ```
 
 ### ifProp
@@ -194,9 +199,12 @@ Returns `pass` if prop is truthy. Otherwise returns `fail`
 
 #### Parameters
 
--   `test` **([Needle](#needle) \| [Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[Needle](#needle)> | [Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object))** 
--   `pass` **any**  (optional, default `""`)
--   `fail` **any**  (optional, default `""`)
+- `test` \*
+  \*([Needle](#needle) \| [Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)
+  &lt;[Needle](#needle)> | [Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object))
+  \*\*
+- `pass` **any** (optional, default `""`)
+- `fail` **any** (optional, default `""`)
 
 #### Examples
 
@@ -211,7 +219,7 @@ const Button = styled.button`
 `;
 ```
 
-Returns **PropsFn** 
+Returns **PropsFn**
 
 ### ifNotProp
 
@@ -219,9 +227,12 @@ Returns `pass` if prop is falsy. Otherwise returns `fail`
 
 #### Parameters
 
--   `test` **([Needle](#needle) \| [Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[Needle](#needle)> | [Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object))** 
--   `pass` **any** 
--   `fail` **any** 
+- `test` \*
+  \*([Needle](#needle) \| [Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)
+  &lt;[Needle](#needle)> | [Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object))
+  \*\*
+- `pass` **any**
+- `fail` **any**
 
 #### Examples
 
@@ -234,7 +245,7 @@ const Button = styled.button`
 `;
 ```
 
-Returns **PropsFn** 
+Returns **PropsFn**
 
 ### withProp
 
@@ -242,8 +253,10 @@ Calls a function passing properties values as arguments.
 
 #### Parameters
 
--   `needle` **([Needle](#needle) \| [Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[Needle](#needle)>)** 
--   `fn` **[Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function)** 
+- `needle` \*
+  \*([Needle](#needle) \| [Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)
+  &lt;[Needle](#needle)>)\*\*
+- `fn` **[Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function)**
 
 #### Examples
 
@@ -255,12 +268,12 @@ import { withProp, prop } from "styled-bettertools";
 
 const Button = styled.button`
   border-color: ${withProp(prop("theme.primaryColor", "blue"), darken(0.5))};
-  font-size: ${withProp("theme.size", size => `${size + 1}px`)};
+  font-size: ${withProp("theme.size", (size) => `${size + 1}px`)};
   background: ${withProp(["foo", "bar"], (foo, bar) => `${foo}${bar}`)};
 `;
 ```
 
-Returns **PropsFn** 
+Returns **PropsFn**
 
 ### switchProp
 
@@ -268,41 +281,48 @@ Switches on a given prop. Returns the value or function for a given prop value. 
 
 #### Parameters
 
--   `needle` **[Needle](#needle)** 
--   `cases` **([Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object) | PropsFn)** 
--   `defaultCase` **any** 
+- `needle` **[Needle](#needle)**
+- `cases` **([Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object) | PropsFn)**
+- `defaultCase` **any**
 
 #### Examples
 
 ```javascript
 import styled, { css } from "styled-components";
-import {switchProp, prop} from "styled-bettertools";
+import { switchProp, prop } from "styled-bettertools";
 
 const Button = styled.button`
-  font-size: ${switchProp(prop("size", "medium"), {
-    small: prop("theme.sizes.sm", "12px"),
-    medium: prop("theme.sizes.md", "16px"),
-    large: prop("theme.sizes.lg", "20px")
-  }, prop("theme.sizes.md", "16px"))};
-  ${switchProp("theme.kind", {
-    light: css`
-      color: LightBlue;
+  font-size: ${switchProp(
+    prop("size", "medium"),
+    {
+      small: prop("theme.sizes.sm", "12px"),
+      medium: prop("theme.sizes.md", "16px"),
+      large: prop("theme.sizes.lg", "20px"),
+    },
+    prop("theme.sizes.md", "16px"),
+  )};
+  ${switchProp(
+    "theme.kind",
+    {
+      light: css`
+        color: LightBlue;
+      `,
+      dark: css`
+        color: DarkBlue;
+      `,
+    },
+    css`
+      color: black;
     `,
-    dark: css`
-      color: DarkBlue;
-    `
-  }, css`color: black;`)}
+  )}
 `;
 
-<Button size="large" theme={{ kind: "light" }} />
+<Button size="large" theme={{ kind: "light" }} />;
 ```
 
-Returns **PropsFn** 
+Returns **PropsFn**
 
 ### Types
-
-
-
 
 #### Needle
 

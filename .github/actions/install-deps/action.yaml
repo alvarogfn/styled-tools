@@ -2,13 +2,13 @@ name: Reusable install deps
 description: This workflow installs dependencies using PNPM and caches the store directory. It is meant to be used as a reusable workflow.
 inputs:
   NODE_VERSION:
-    description: 'The version of Node.js to use'
+    description: "The version of Node.js to use"
     required: true
-    default: '22.x'
+    default: "22.x"
   PNPM_VERSION:
-    description: 'The version of PNPM to use'
+    description: "The version of PNPM to use"
     required: true
-    default: '9.x'
+    default: "9.x"
 runs:
   using: composite
   steps:
