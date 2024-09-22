@@ -1,5 +1,11 @@
 # styled-bettertools
 
+## 0.1.1
+
+### Patch Changes
+
+- [`af55cd7`](https://github.com/alvarogfn/styled-bettertools/commit/af55cd70715ff4b3017bf03ff004123cbafc65e2) Thanks [@alvarogfn](https://github.com/alvarogfn)! - fix: add typescript-transform-paths to fix file imports in dist
+
 ## 0.1.0
 
 ### Minor Changes
