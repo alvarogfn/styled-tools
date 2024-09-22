@@ -9,13 +9,9 @@ Useful interpolated functions for [styled-components](https://github.com/styled-
 
 ## Install
 
-npm:
+pnpm:
 
     npm i styled-bettertools
-
-Yarn:
-
-    yarn add styled-bettertools
 
 ## Usage
 
