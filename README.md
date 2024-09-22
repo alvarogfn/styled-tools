@@ -1,7 +1,9 @@
-# styled-tools 💅
+# styled-bettertools 💅
 
 [![NPM version](https://img.shields.io/npm/v/styled-bettertools.svg?style=flat-square)](https://npmjs.org/package/styled-bettertools)
 [![NPM downloads](https://img.shields.io/npm/dm/styled-bettertools.svg?style=flat-square)](https://npmjs.org/package/styled-tools)
+
+This project is a fork of styled-tools, which is no longer maintained. The main goal of this project is to keep the same API and add new features and improvements.
 
 Useful interpolated functions for [styled-components](https://github.com/styled-components/styled-components) 💅, [emotion](https://github.com/emotion-js/emotion) 👩‍🎤, [JSS](https://github.com/cssinjs/jss) and other CSS-in-JS libraries.
 
@@ -315,4 +317,4 @@ Type: ([string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Glob
 
 ## License
 
-MIT © [Diego Haz](https://github.com/diegohaz)
+MIT © [Alvaro Neto](https://github.com/alvarogfn)
