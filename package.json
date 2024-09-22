@@ -48,9 +48,9 @@
     "test:coverage": "vitest --coverage",
     "test:ui": "vitest --coverage --ui",
     "changeset": "changeset",
-    "version": "changeset version",
+    "version:ci": "changeset version",
     "prepublishOnly": "pnpm build",
-    "publish": "changeset publish"
+    "publish:ci": "changeset publish"
   },
   "keywords": [
     "styled-bettertools",

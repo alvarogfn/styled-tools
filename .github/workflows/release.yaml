@@ -37,7 +37,7 @@ jobs:
         id: changesets
         uses: changesets/action@v1
         with:
-          publish: pnpm publish
-          version: pnpm version
+          publish: pnpm publish:ci
+          version: pnpm version:ci
           title: '[BUMP] Generate a new release'
           commit: 'chore: bump package.version and publish to npm'
