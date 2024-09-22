@@ -42,8 +42,7 @@
     "test": "vitest",
     "test:watch": "vitest --watch",
     "test:coverage": "vitest --coverage",
-    "test:ci": "vitest --ci",
-    "test:types": "vitest --typecheck",
+    "test:ui": "vitest --coverage --ui",
     "changeset": "changeset",
     "version": "changeset version",
     "publish": "changeset publish"
