@@ -5,10 +5,9 @@ import type {
   Interpolation,
   Needle,
   StyleFunction,
-} from "@/shared/types.js";
+} from "@/types/styled-types.js";
 
 import { prop } from "../prop/prop.js";
-
 function parseFunction<Props, Function extends AnyFunction<Props>>(props: Props, test: Function): boolean {
   return Boolean(test(props));
 }

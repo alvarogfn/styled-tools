@@ -1,4 +1,5 @@
 import pluginCommunityComments from "@eslint-community/eslint-plugin-eslint-comments";
+import configPrettier from "eslint-config-prettier";
 import { defineFlatConfig } from "eslint-define-config";
 import pluginArrayFunc from "eslint-plugin-array-func";
 import pluginNoSecrets from "eslint-plugin-no-secrets";
@@ -213,7 +214,7 @@ export default defineFlatConfig([
 
   // Vitest
   {
-    files: ["**/*.test*.ts"],
+    files: ["**/*.test.ts"],
     languageOptions: {
       globals: {
         ...globals.jest,
@@ -230,4 +231,6 @@ export default defineFlatConfig([
       "@typescript-eslint/no-magic-numbers": "off",
     },
   },
+
+  configPrettier,
 ]);

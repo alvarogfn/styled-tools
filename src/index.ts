@@ -5,3 +5,5 @@ export { prop } from "./tools/prop/prop.js";
 export { switchProp } from "./tools/switch-prop/switch-prop.js";
 export { theme } from "./tools/theme/theme.js";
 export { withProp } from "./tools/with-prop/with-prop.js";
+// utility types
+export type * from "./types/styled-types.js";

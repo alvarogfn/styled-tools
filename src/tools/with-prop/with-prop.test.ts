@@ -1,4 +1,4 @@
-import type { ComponentPropsWithTheme, Needle } from "@/shared/types.js";
+import type { ComponentPropsWithTheme, Needle } from "@/types/styled-types.js";
 
 import { describe, expect, it } from "vitest";
 

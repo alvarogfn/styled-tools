@@ -41,6 +41,8 @@
   ],
   "scripts": {
     "lint": "eslint src",
+    "lint:fix": "eslint src --fix",
+    "format": "pnpm lint:fix && prettier --write .",
     "clean": "rimraf dist",
     "build": "pnpm clean && tsc --project tsconfig.build.json",
     "test": "vitest",
@@ -61,19 +63,19 @@
     "css-in-js"
   ],
   "dependencies": {
-    "@emotion/react": "11.13.3",
-    "@types/node": "22.5.5",
-    "dot-prop": "9.0.0",
-    "styled-components": "6.1.13"
+    "csstype": "3.1.3",
+    "dot-prop": "9.0.0"
   },
   "devDependencies": {
     "@changesets/changelog-github": "0.5.0",
     "@changesets/cli": "2.27.8",
     "@eslint-community/eslint-plugin-eslint-comments": "4.4.0",
     "@eslint/js": "9.11.0",
+    "@types/node": "22.5.5",
     "@vitest/coverage-istanbul": "2.1.1",
     "@vitest/ui": "2.1.1",
     "eslint": "9.11.0",
+    "eslint-config-prettier": "9.1.0",
     "eslint-define-config": "2.1.0",
     "eslint-plugin-array-func": "5.0.2",
     "eslint-plugin-no-secrets": "1.0.2",

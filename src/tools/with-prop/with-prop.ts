@@ -1,5 +1,10 @@
-import type { ComponentProps, ComponentPropsWithTheme, Needle } from "@/shared/types.js";
-import type { Interpolation, StyleFunction } from "styled-components";
+import type {
+  ComponentProps,
+  ComponentPropsWithTheme,
+  Interpolation,
+  Needle,
+  StyleFunction,
+} from "@/types/styled-types.js";
 
 import { prop } from "../prop/prop.js";
 

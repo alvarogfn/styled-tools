@@ -1,4 +1,4 @@
-import type { ComponentProps, StyleFunction } from "@/shared/types.js";
+import type { ComponentProps, StyleFunction } from "@/types/styled-types.js";
 
 import { clamp } from "@/helpers/clamp.js";
 import { toArray } from "@/helpers/to-array.js";
@@ -182,9 +182,9 @@ export function palette<Props extends ComponentProps>(
     const tone =
       typeof keyOrTone === "number"
         ? keyOrTone
-        : (typeof toneOrDefaultValue === "number"
+        : typeof toneOrDefaultValue === "number"
           ? toneOrDefaultValue
-          : props.tone || 0);
+          : props.tone || 0;
 
     const finalDefaultValue = toneOrDefaultValue === tone ? defaultValue : toneOrDefaultValue;
 
