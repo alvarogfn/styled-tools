@@ -1,5 +1,11 @@
 # styled-bettertools
 
+## 0.1.2
+
+### Patch Changes
+
+- [#3](https://github.com/alvarogfn/styled-bettertools/pull/3) [`5cb775f`](https://github.com/alvarogfn/styled-bettertools/commit/5cb775f102ba8c2d80140f8114c9c9c68433aef0) Thanks [@alvarogfn](https://github.com/alvarogfn)! - Remove styled-components and emotion as dependencies
+
 ## 0.1.1
 
 ### Patch Changes
