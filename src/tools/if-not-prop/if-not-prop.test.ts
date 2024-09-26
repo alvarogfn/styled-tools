@@ -9,6 +9,12 @@ function makeSut<Props, Pass, Fail>(test: Needles<Props>, props: Props, pass?: P
 }
 
 describe("ifNotProp", () => {
+  describe("when called without pass or fail", () => {
+    test("return an empty string", () => {
+      expect(makeSut("foo", { foo: true })).toBe("");
+    });
+  });
+
   describe("when called with a string argument", () => {
     test.each([
       { expected: "yes", props: {}, test: "foo" },
