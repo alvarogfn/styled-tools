@@ -47,6 +47,7 @@
   "scripts": {
     "lint": "eslint src",
     "lint:fix": "eslint src --fix",
+    "typecheck": "tsc --noEmit",
     "format": "pnpm lint:fix && prettier --write .",
     "clean": "rimraf dist",
     "dev": "tsc --watch --project tsconfig.build.json",

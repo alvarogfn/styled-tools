@@ -1,4 +1,4 @@
-import type { GenericFunction, StringAutoComplete } from "@/types/styled-types.js";
+import type { GenericFunction, StringAutoComplete } from "@/types/utility.js";
 
 import { prop } from "../prop/prop.js";
 

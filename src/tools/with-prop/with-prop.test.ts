@@ -1,13 +1,11 @@
-import type { ComponentPropsWithTheme, Needles } from "@/types/styled-types.js";
+import type { Needles } from "@/types/utility.js";
 
 import { describe, expect, it } from "vitest";
 
 import { withProp } from "./with-prop.js";
 
-type CallbackFunction = (...args: any[]) => any;
-
-function makeSut<Props extends object>(props: Props, needle: Needles<Props> | Needles<Props>[], fn: CallbackFunction) {
-  return withProp<Props>(needle, fn)(props as ComponentPropsWithTheme<Props>);
+function makeSut<Props, Interpolation>(props: Props, needle: Needles<Props>, fn: (...args: any[]) => Interpolation) {
+  return withProp<Props, Interpolation>(needle, fn)(props);
 }
 
 const testCases = [

@@ -1,4 +1,4 @@
-import type { GenericFunction, Needle } from "@/types/styled-types.js";
+import type { GenericFunction, Needle } from "@/types/utility.js";
 
 import { prop } from "../prop/prop.js";
 

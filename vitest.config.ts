@@ -21,8 +21,5 @@ export default defineConfig({
       },
     },
     environment: "node",
-    typecheck: {
-      enabled: true,
-    },
   },
 });

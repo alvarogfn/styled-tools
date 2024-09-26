@@ -1,11 +1,9 @@
-import type { ComponentPropsWithTheme } from "@/types/styled-types.js";
-
 import { describe, expect, test } from "vitest";
 
 import { prop } from "./prop.js";
 
 function makeSut<P extends object>(path: string, props: P, defaultValue?: unknown) {
-  return prop<P>(path, defaultValue)(props as ComponentPropsWithTheme<P>);
+  return prop<P>(path, defaultValue)(props);
 }
 
 const testCases = [

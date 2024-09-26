@@ -1,4 +1,4 @@
-import type { Needle } from "@/types/styled-types.js";
+import type { Needle } from "@/types/utility.js";
 
 import { describe, expect, it } from "vitest";
 

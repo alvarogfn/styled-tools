@@ -1,4 +1,4 @@
-import type { ComponentProps, GenericFunction } from "@/types/styled-types.js";
+import type { GenericFunction } from "@/types/utility.js";
 
 import { clamp } from "@/helpers/clamp.js";
 import { toArray } from "@/helpers/to-array.js";
@@ -49,7 +49,7 @@ export function palette<Props>(tone?: number): GenericFunction<Props>;
  * @param defaultValue The default value to return if the palette or tone is not found.
  * @returns Returns `props.theme.palette[key || props.palette][tone || props.tone || 0]` or `defaultValue`.
  */
-export function palette<Props extends ComponentProps>(tone: number, defaultValue: unknown): GenericFunction<Props>;
+export function palette<Props>(tone: number, defaultValue: unknown): GenericFunction<Props>;
 
 /**
  * @example
