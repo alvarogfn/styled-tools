@@ -1,13 +1,11 @@
-import type { ComponentPropsWithTheme, Needle } from "@/types/styled-types.js";
+import type { Needles } from "@/types/utility.js";
 
 import { describe, expect, it } from "vitest";
 
 import { withProp } from "./with-prop.js";
 
-type CallbackFunction = (...args: any[]) => any;
-
-function makeSut<Props extends object>(props: Props, needle: Needle<Props> | Needle<Props>[], fn: CallbackFunction) {
-  return withProp<Props>(needle, fn)(props as ComponentPropsWithTheme<Props>);
+function makeSut<Props, Interpolation>(props: Props, needle: Needles<Props>, fn: (...args: any[]) => Interpolation) {
+  return withProp<Props, Interpolation>(needle, fn)(props);
 }
 
 const testCases = [
@@ -108,6 +106,27 @@ const testCases = [
     needle: (props: any) => props.type,
     props: { type: "foo" },
     title: "return true when called with needle is function",
+  },
+  {
+    expected: true,
+    fn: ({ type }: any) => type === "foo",
+    needle: { type: true },
+    props: { type: "foo" },
+    title: "return true when called with needle object",
+  },
+  {
+    expected: true,
+    fn: ({ type }: any, { bar }: any) => Boolean(type && bar),
+    needle: [{ type: "foo" }, { bar: "bar" }],
+    props: { bar: "bar", type: true },
+    title: "return true when called with needle object array",
+  },
+  {
+    expected: false,
+    fn: ({ type }: any) => Boolean(type),
+    needle: { type: (value: any) => value === false },
+    props: { type: true },
+    title: "return true when called with needle object with function",
   },
 ];
 

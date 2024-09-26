@@ -1,44 +1,17 @@
-import type {
-  AnyFunction,
-  ComponentProps,
-  ComponentPropsWithTheme,
-  Interpolation,
-  Needle,
-  StyleFunction,
-} from "@/types/styled-types.js";
+import type { GenericFunction, Needles } from "@/types/utility.js";
 
-import { prop } from "../prop/prop.js";
-function parseFunction<Props, Function extends AnyFunction<Props>>(props: Props, test: Function): boolean {
-  return Boolean(test(props));
-}
-
-function parseObject<Props extends ComponentProps>(props: ComponentPropsWithTheme<Props>, test: object): boolean {
-  return Object.entries(test).every(([key, value]) => {
-    const propValue = prop(key)(props);
-    if (typeof value === "function") {
-      return value(propValue);
-    }
-    return propValue === value;
-  });
-}
-
-function parseString<Props extends ComponentProps>(props: ComponentPropsWithTheme<Props>, test: string): boolean {
-  return Boolean(prop(test)(props));
-}
-
-type ParseMapKey = "function" | "object" | "string";
-
-const parseMap: Record<ParseMapKey, Function> = {
-  function: parseFunction,
-  object: parseObject,
-  string: parseString,
-};
+import { evaluateNeedles } from "@/helpers/evaluate-needles.js";
 
 /**
  * Returns `pass` if prop is truthy. Otherwise returns `fail`
+ * @template Props The type of the component props.
+ * @param test the needles that will define whether the test passed or failed
+ * @param pass The value to return or execute if the test is truthy.
+ * @param fail The value to return or execute if the test is falsy.
+ *
  * @example
  * import styled from "styled-components";
- * import { ifProp, palette } from "styled-bettertools";
+ * import { ifProp, palette } from "styled-bettertools"; // or "styled-bettertools/if-prop"
  *
  * const Button = styled.button`
  *   background-color: ${ifProp("transparent", "transparent", palette(0))};
@@ -46,23 +19,20 @@ const parseMap: Record<ParseMapKey, Function> = {
  *   font-size: ${ifProp({ size: "large" }, "20px", ifProp({ size: "medium" }, "16px", "12px"))};
  * `;
  */
-export function ifProp<Props extends ComponentProps>(
-  test: Needle<Props> | Needle<Props>[] | object,
-  pass: Interpolation<Props> = "",
-  fail: Interpolation<Props> = "",
-): StyleFunction<Props> {
-  return (props: ComponentPropsWithTheme<Props>) => {
-    let result: boolean;
-
-    if (Array.isArray(test)) {
-      result = test.every((item: Needle<Props>) => {
-        return parseMap[typeof item as ParseMapKey](props, item);
-      });
-    } else {
-      result = parseMap[typeof test as ParseMapKey](props, test);
-    }
+export function ifProp<Props, Pass, Fail>(
+  test: Needles<Props>,
+  pass: Pass | string = "",
+  fail: Fail | string = "",
+): GenericFunction<Props> {
+  return (props: Props): Pass | Fail | string => {
+    const result = evaluateNeedles(test, props);
 
     const value = result ? pass : fail;
-    return typeof value === "function" ? value(props) : value;
+
+    if (typeof value === "function") {
+      return value.call(null, props);
+    }
+
+    return value;
   };
 }

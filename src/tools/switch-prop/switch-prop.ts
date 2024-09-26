@@ -1,20 +1,20 @@
-import type {
-  ComponentProps,
-  ComponentPropsWithTheme,
-  Interpolation,
-  Needle,
-  StyleFunction,
-} from "@/types/styled-types.js";
-
-import type { Cases } from "./types.js";
+import type { GenericFunction, Needle } from "@/types/utility.js";
 
 import { prop } from "../prop/prop.js";
 
+export type SwitchPropCases<Props, Interpolation> =
+  | { [key: string]: Interpolation }
+  | ((props: Props) => { [key: string]: Interpolation });
+
 /**
  * Switches on a given prop. Returns the value or function for a given prop value. Third parameter is default value.
+ * @template Props The type of the component props object.
+ * @param needle The function that will resolve the key of `cases`.
+ * @param cases An object mapping prop values to their corresponding values or functions.
+ * @param defaultCase The value that will be returned if no case property is found.
  * @example
  * import styled, { css } from "styled-components";
- * import { switchProp, prop } from "styled-bettertools";
+ * import { switchProp, prop } from "styled-bettertools" // or "styled-bettertools/switch-prop";
  *
  * const Button = styled.button`
  *   font-size: ${switchProp(prop("size", "medium"), {
@@ -31,21 +31,19 @@ import { prop } from "../prop/prop.js";
  *     `
  *   }, css`color: black;`)}
  * `;
- *
- * <Button size="large" theme={{ kind: "light" }} />
  */
-export function switchProp<Props extends ComponentProps>(
+export function switchProp<Props, Interpolation>(
   needle: Needle<Props>,
-  cases: Cases<Props>,
-  defaultCase?: Interpolation<Props>,
-): StyleFunction<Props> {
-  return (props: ComponentPropsWithTheme<Props>) => {
-    const value = typeof needle === "function" ? needle(props) : prop(String(needle))(props);
+  cases: SwitchPropCases<Props, Interpolation>,
+  defaultCase?: Interpolation,
+): GenericFunction<Props> {
+  return (props: Props) => {
+    const value: string = typeof needle === "function" ? needle(props) : prop<Props>(String(needle))(props);
 
     const finalCases = typeof cases === "function" ? cases(props) : cases;
 
-    if ((value as string) in finalCases) {
-      return finalCases[value as string];
+    if (value in finalCases) {
+      return finalCases[value];
     }
 
     return defaultCase;

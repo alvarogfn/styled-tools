@@ -1,16 +1,11 @@
-import type { ComponentPropsWithTheme, Interpolation, Needle } from "@/types/styled-types.js";
+import type { Needles } from "@/types/utility.js";
 
 import { describe, expect, test } from "vitest";
 
 import { ifProp } from "./if-prop.js";
 
-function makeSut<Props extends object>(
-  test: Needle<Props> | Needle<Props>[] | object,
-  props: Props,
-  pass?: Interpolation<Props>,
-  fail?: Interpolation<Props>,
-) {
-  return ifProp<Props>(test, pass, fail)(props as ComponentPropsWithTheme<Props>);
+function makeSut<Props, Pass, Fail>(test: Needles<Props>, props: Props, pass?: Pass, fail?: Fail) {
+  return ifProp<Props, Pass, Fail>(test, pass, fail)(props);
 }
 
 describe("ifProp", () => {
@@ -120,11 +115,11 @@ describe("ifProp", () => {
 
   describe("when called with pass/fail as a function", () => {
     test("return 'bar' when test is 'foo' and fail is '(props) => props.bar' and props is '{bar: \"bar\"}'}", () => {
-      expect(makeSut("foo", { bar: "bar" }, "foo", (props) => props.bar)).toBe("bar");
+      expect(makeSut("foo", { bar: "bar" }, "foo", (props: any) => props.bar)).toBe("bar");
     });
 
     test("return 'foo' when test is 'foo' and pass is '(props) => props.foo' and props is '{foo: \"foo\"}'}", () => {
-      expect(makeSut("foo", { foo: "foo" }, (props) => props.foo, "bar")).toBe("foo");
+      expect(makeSut("foo", { foo: "foo" }, (props: any) => props.foo, "bar")).toBe("foo");
     });
   });
 });

@@ -1,5 +1,3 @@
-import type { ComponentPropsWithTheme } from "@/types/styled-types.js";
-
 import { describe, expect, it } from "vitest";
 
 import { palette } from "./palette.js";
@@ -11,8 +9,6 @@ const theme = {
   },
 };
 
-theme.toString = () => "{...}";
-
 type Theme = Partial<typeof theme>;
 
 function makeSut<Props extends object>(
@@ -22,11 +18,7 @@ function makeSut<Props extends object>(
   toneOrDefaultValue?: any,
   defaultValue?: any,
 ) {
-  return palette<Props>(
-    keyOrTone,
-    toneOrDefaultValue,
-    defaultValue,
-  )({ ...props, theme } as ComponentPropsWithTheme<Props>);
+  return palette<Props>(keyOrTone, toneOrDefaultValue, defaultValue)({ ...props, theme });
 }
 
 describe("[Tools]: palette", () => {
