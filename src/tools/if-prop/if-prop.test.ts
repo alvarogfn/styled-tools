@@ -1,11 +1,11 @@
-import type { ComponentPropsWithTheme, Interpolation, Needle } from "@/types/styled-types.js";
+import type { ComponentPropsWithTheme, Interpolation, Needles } from "@/types/styled-types.js";
 
 import { describe, expect, test } from "vitest";
 
 import { ifProp } from "./if-prop.js";
 
 function makeSut<Props extends object>(
-  test: Needle<Props> | Needle<Props>[] | object,
+  test: Needles<Props> | Needles<Props>[] | object,
   props: Props,
   pass?: Interpolation<Props>,
   fail?: Interpolation<Props>,
