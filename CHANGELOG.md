@@ -1,5 +1,11 @@
 # styled-bettertools
 
+## 0.2.1
+
+### Patch Changes
+
+- [#9](https://github.com/alvarogfn/styled-bettertools/pull/9) [`4a2bb0a`](https://github.com/alvarogfn/styled-bettertools/commit/4a2bb0ae271b3ded7e25899ecf3e20a1c30bb73f) Thanks [@alvarogfn](https://github.com/alvarogfn)! - Improve Documentation and fix some types
+
 ## 0.2.0
 
 ### Minor Changes
