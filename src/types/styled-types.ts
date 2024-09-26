@@ -8,7 +8,8 @@ export type StringAutoComplete<T> = T | (string & {});
 
 export type AnyFunction<Props = object, Return = unknown> = (props: Props) => Return;
 
-export type Needle<Props> = StringAutoComplete<keyof Props> | ((props: Props) => unknown);
+export type Needles<Props> = StringAutoComplete<keyof Props> | ((props: Props) => any) | Needles<Props>[] | object;
+export type Needle<Props> = StringAutoComplete<keyof Props> | ((props: Props) => string);
 
 export type ComponentProps = object;
 
