@@ -1,18 +1,18 @@
-import type { ComponentPropsWithTheme, Interpolation, Needle } from "@/types/styled-types.js";
+import type { Needle } from "@/types/styled-types.js";
 
 import { describe, expect, it } from "vitest";
 
-import type { Cases } from "./types.js";
+import type { SwitchPropCases } from "./switch-prop.js";
 
 import { switchProp } from "./switch-prop.js";
 
-function makeSut<Props extends object>(
+function makeSut<Props extends object, Interpolation>(
   props: Props,
   needle: Needle<Props>,
-  cases: Cases<Props>,
-  defaultCase?: Interpolation<Props>,
+  cases: SwitchPropCases<Props, Interpolation>,
+  defaultCase?: Interpolation,
 ) {
-  return switchProp<Props>(needle, cases, defaultCase)(props as ComponentPropsWithTheme<Props>);
+  return switchProp<Props, Interpolation>(needle, cases, defaultCase)(props as Props);
 }
 
 const testCases = [
