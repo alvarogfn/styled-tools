@@ -2,6 +2,8 @@ export type DefaultTheme = {
   [key: string]: unknown;
 };
 
+export type GenericFunction<Props> = (props: Props) => any;
+
 export type StringAutoComplete<T> = T | (string & {});
 
 export type AnyFunction<Props = object, Return = unknown> = (props: Props) => Return;
