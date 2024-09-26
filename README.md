@@ -23,8 +23,12 @@ Yarn:
 import styled, { css } from "styled-components";
 import { prop, ifProp, switchProp } from "styled-bettertools";
 
-const Button = styled.button`
-  color: ${prop("color", "red")};
+// If the component does not have Props interface, pass <object>
+// to prevent the generic functions type from being incorrectly inferred
+// or pass the Props interface as generic
+const Button = styled.button<object>`
+  color: ${prop<{ color: string }>("color", "red")};
+  
   font-size: ${ifProp({ size: "large" }, "20px", "14px")};
   background-color: ${switchProp("theme", {
   dark: "blue",
@@ -49,7 +53,7 @@ const Button = styled.button`
 A more complex example:
 
 ```jsx
-const Button = styled.button`
+const Button = styled.button<object>`
   color: ${prop("theme.colors.white", "#fff")};
    font-size: ${ifProp({ size: "large" }, prop("theme.sizes.lg", "20px"), prop("theme.sizes.md", "14px"))};
    background-color: ${prop("theme.colors.black", "#000")};
@@ -130,7 +134,6 @@ const Button = styled.button`
 `;
 ```
 
-Returns **PropsFn**
 
 ### theme
 
@@ -148,7 +151,7 @@ Same as `prop`, except that it returns `props.theme[path]` instead of
 import styled from "styled-components";
 import { theme } from "styled-bettertools";
 
-const Button = styled.button`
+const Button = styled.button<object>`
   color: ${theme("button.color", "red")};
 `;
 ```
@@ -212,14 +215,13 @@ Returns `pass` if prop is truthy. Otherwise returns `fail`
 import styled from "styled-components";
 import { ifProp, palette } from "styled-bettertools";
 
-const Button = styled.button`
+const Button = styled.button<object>`
   background-color: ${ifProp("transparent", "transparent", palette(0))};
   color: ${ifProp(["transparent", "accent"], palette("secondary"))};
   font-size: ${ifProp({ size: "large" }, "20px", ifProp({ size: "medium" }, "16px", "12px"))};
 `;
 ```
 
-Returns **PropsFn**
 
 ### ifNotProp
 
@@ -245,7 +247,6 @@ const Button = styled.button`
 `;
 ```
 
-Returns **PropsFn**
 
 ### withProp
 
@@ -273,7 +274,6 @@ const Button = styled.button`
 `;
 ```
 
-Returns **PropsFn**
 
 ### switchProp
 
@@ -291,7 +291,7 @@ Switches on a given prop. Returns the value or function for a given prop value. 
 import styled, { css } from "styled-components";
 import { switchProp, prop } from "styled-bettertools";
 
-const Button = styled.button`
+const Button = styled.button<object>`
   font-size: ${switchProp(
     prop("size", "medium"),
     {
@@ -319,8 +319,6 @@ const Button = styled.button`
 
 <Button size="large" theme={{ kind: "light" }} />;
 ```
-
-Returns **PropsFn**
 
 ### Types
 

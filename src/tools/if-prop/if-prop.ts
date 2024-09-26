@@ -13,18 +13,14 @@ import { evaluateNeedles } from "@/helpers/evaluate-needles.js";
  * import styled from "styled-components";
  * import { ifProp, palette } from "styled-bettertools"; // or "styled-bettertools/if-prop"
  *
- * const Button = styled.button`
+ * const Button = styled.button<object>`
  *   background-color: ${ifProp("transparent", "transparent", palette(0))};
  *   color: ${ifProp(["transparent", "accent"], palette("secondary"))};
  *   font-size: ${ifProp({ size: "large" }, "20px", ifProp({ size: "medium" }, "16px", "12px"))};
  * `;
  */
-export function ifProp<Props, Pass, Fail>(
-  test: Needles<Props>,
-  pass: Pass | string = "",
-  fail: Fail | string = "",
-): GenericFunction<Props> {
-  return (props: Props): Pass | Fail | string => {
+export function ifProp<Props>(test: Needles<Props>, pass: any = "", fail: any = ""): GenericFunction<Props> {
+  return (props: Props) => {
     const result = evaluateNeedles(test, props);
 
     const value = result ? pass : fail;

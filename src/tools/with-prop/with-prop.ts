@@ -11,7 +11,7 @@ import { parseObject } from "./utils.js";
  * import { darken } from "polished";
  * import { withProp, prop } from "styled-bettertools"; // or "styled-bettertools/with-prop";
  *
- * const Button = styled.button`
+ * const Button = styled.button<object>`
  *   border-color: ${withProp(prop("theme.primaryColor", "blue"), darken(0.5))};
  *   font-size: ${withProp("theme.size", size => `${size + 1}px`)};
  *   background: ${withProp(["foo", "bar"], (foo, bar) => `${foo}${bar}`)};

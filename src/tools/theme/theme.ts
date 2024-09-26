@@ -12,7 +12,7 @@ type ThemeProperty<Theme> = { theme: Theme };
  * import type { Theme } from './theme';
  * import { theme } from "styled-bettertools";
  *
- * const Button = styled.button`
+ * const Button = styled.button<object>`
  *  color: ${theme("button.color", "red")};
  *  color: ${theme<Theme>("button", "red")};
  * `;

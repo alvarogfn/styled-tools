@@ -4,8 +4,8 @@ import { describe, expect, test } from "vitest";
 
 import { ifNotProp } from "./if-not-prop.js";
 
-function makeSut<Props, Pass, Fail>(test: Needles<Props>, props: Props, pass?: Pass, fail?: Fail) {
-  return ifNotProp<Props, Pass, Fail>(test, pass, fail)(props);
+function makeSut<Props>(test: Needles<Props>, props: Props, pass?: any, fail?: any) {
+  return ifNotProp<Props>(test, pass, fail)(props);
 }
 
 describe("ifNotProp", () => {
