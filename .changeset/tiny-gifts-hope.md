@@ -2,4 +2,4 @@
 "styled-bettertools": patch
 ---
 
-Fix tools types to prevent errors with styled-components, emotion, etc
+Rewrites the types of utility functions to improve compatibility with different CSS-IN-JS libraries. Also removes csstype as a dependency.
