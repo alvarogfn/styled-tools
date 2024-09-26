@@ -1,16 +1,7 @@
-import type {
-  ComponentProps,
-  ComponentPropsWithTheme,
-  Interpolation,
-  Needle,
-  StyleFunction,
-} from "@/types/styled-types.js";
+import type { GenericFunction, Needles } from "@/types/styled-types.js";
 
 import { prop } from "../prop/prop.js";
-
-type CallbackFunction<Props extends ComponentProps, CallbackArgs extends Array<unknown>> = (
-  ...args: [...CallbackArgs]
-) => Interpolation<Props>;
+import { parseObject } from "./utils.js";
 
 /**
  * Calls a function passing properties values as arguments.
@@ -18,7 +9,7 @@ type CallbackFunction<Props extends ComponentProps, CallbackArgs extends Array<u
  * // example with polished
  * import styled from "styled-components";
  * import { darken } from "polished";
- * import { withProp, prop } from "styled-bettertools";
+ * import { withProp, prop } from "styled-bettertools"; // or "styled-bettertools/with-prop";
  *
  * const Button = styled.button`
  *   border-color: ${withProp(prop("theme.primaryColor", "blue"), darken(0.5))};
@@ -26,19 +17,24 @@ type CallbackFunction<Props extends ComponentProps, CallbackArgs extends Array<u
  *   background: ${withProp(["foo", "bar"], (foo, bar) => `${foo}${bar}`)};
  * `;
  */
-export function withProp<Props extends ComponentProps, CallbackArgs extends Array<unknown> = unknown[]>(
-  needle: Needle<Props> | Needle<Props>[],
-  fn: CallbackFunction<Props, CallbackArgs>,
-): StyleFunction<Props> {
-  return (props: ComponentPropsWithTheme<Props>) => {
-    if (Array.isArray(needle)) {
-      // @ts-expect-error - TS doesn't support variadic tuple types
-      const needles = needle.map((arg) => withProp<Props, CallbackArgs>(arg, (x) => x)(props));
-      return fn(...(needles as CallbackArgs));
+export function withProp<Props, Interpolation>(
+  needles: Needles<Props>,
+  fn: (...args: any[]) => Interpolation,
+): GenericFunction<Props> {
+  return (props: Props) => {
+    if (Array.isArray(needles)) {
+      const results = needles.map((arg) => withProp<Props, Interpolation>(arg, (x) => x)(props));
+      return fn(...results);
     }
-    if (typeof needle === "function") {
-      return fn(...([needle(props)] as CallbackArgs));
+
+    if (typeof needles === "function") {
+      return fn(needles(props));
     }
-    return fn(...([prop(String(needle))(props)] as CallbackArgs));
+
+    if (typeof needles === "object") {
+      return fn(parseObject(needles, props));
+    }
+
+    return fn(prop(String(needles))(props));
   };
 }
