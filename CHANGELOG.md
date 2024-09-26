@@ -1,5 +1,15 @@
 # styled-bettertools
 
+## 0.2.0
+
+### Minor Changes
+
+- [#7](https://github.com/alvarogfn/styled-bettertools/pull/7) [`41f4a91`](https://github.com/alvarogfn/styled-bettertools/commit/41f4a9108b3bf9a95b0e34b23b5100181e00b371) Thanks [@alvarogfn](https://github.com/alvarogfn)! - add possibility to pass a object to withProp and make composition with objects
+
+### Patch Changes
+
+- [#7](https://github.com/alvarogfn/styled-bettertools/pull/7) [`41f4a91`](https://github.com/alvarogfn/styled-bettertools/commit/41f4a9108b3bf9a95b0e34b23b5100181e00b371) Thanks [@alvarogfn](https://github.com/alvarogfn)! - Rewrites the types of utility functions to improve compatibility with different CSS-IN-JS libraries. Also removes csstype as a dependency.
+
 ## 0.1.2
 
 ### Patch Changes
