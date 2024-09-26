@@ -107,6 +107,27 @@ const testCases = [
     props: { type: "foo" },
     title: "return true when called with needle is function",
   },
+  {
+    expected: true,
+    fn: ({ type }: any) => type === "foo",
+    needle: { type: true },
+    props: { type: "foo" },
+    title: "return true when called with needle object",
+  },
+  {
+    expected: true,
+    fn: ({ type }: any, { bar }: any) => Boolean(type && bar),
+    needle: [{ type: "foo" }, { bar: "bar" }],
+    props: { bar: "bar", type: true },
+    title: "return true when called with needle object array",
+  },
+  {
+    expected: false,
+    fn: ({ type }: any) => Boolean(type),
+    needle: { type: (value: any) => value === false },
+    props: { type: true },
+    title: "return true when called with needle object array",
+  },
 ];
 
 describe("[Tools]: with-prop", () => {
