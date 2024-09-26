@@ -126,7 +126,7 @@ const testCases = [
     fn: ({ type }: any) => Boolean(type),
     needle: { type: (value: any) => value === false },
     props: { type: true },
-    title: "return true when called with needle object array",
+    title: "return true when called with needle object with function",
   },
 ];
 
