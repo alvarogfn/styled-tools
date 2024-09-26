@@ -13,10 +13,14 @@ import { ifProp } from "../if-prop/if-prop.js";
  * import styled from "styled-components";
  * import { ifNotProp } from "styled-bettertools"; // or "styled-bettertools/if-not-prop"
  *
- * const Button = styled.button<object>`
+ * const Button = styled.button`
  *   font-size: ${ifNotProp("large", "20px", "30px")};
  * `;
  */
-export function ifNotProp<Props>(test: Needles<Props>, pass: any = "", fail: any = ""): GenericFunction<Props> {
-  return ifProp<Props>(test, fail, pass);
+export function ifNotProp<Props, Pass, Fail>(
+  test: Needles<Props>,
+  pass: Pass | string = "",
+  fail: Fail | string = "",
+): GenericFunction<Props> {
+  return ifProp<Props, Fail, Pass>(test, fail, pass);
 }

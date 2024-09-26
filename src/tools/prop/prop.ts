@@ -14,7 +14,7 @@ import { getProperty } from "dot-prop";
  * import { prop } from "styled-bettertools"; // or "styled-bettertools/prop"
  *
  *
- * const Button = styled.button<object>`
+ * const Button = styled.button`
  *   color: ${prop("color.primary", "red")};
  * `;
  */
