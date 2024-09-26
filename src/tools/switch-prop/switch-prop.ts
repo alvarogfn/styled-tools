@@ -16,7 +16,7 @@ export type SwitchPropCases<Props, Interpolation> =
  * import styled, { css } from "styled-components";
  * import { switchProp, prop } from "styled-bettertools" // or "styled-bettertools/switch-prop";
  *
- * const Button = styled.button`
+ * const Button = styled.button<object>`
  *   font-size: ${switchProp(prop("size", "medium"), {
  *     small: prop("theme.sizes.sm", "12px"),
  *     medium: prop("theme.sizes.md", "16px"),

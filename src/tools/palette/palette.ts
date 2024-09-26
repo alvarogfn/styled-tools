@@ -12,7 +12,7 @@ import { toArray } from "@/helpers/to-array.js";
  *   }
  * };
  *
- * const Button = styled.button`
+ * const Button = styled.button<object>`
  *   color: ${palette(1)}; // props.theme.palette[props.palette][1]
  * `;
  *
