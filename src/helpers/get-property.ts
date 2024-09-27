@@ -1,3 +1,4 @@
+/* istanbul ignore file -- @preserve */
 /* eslint-disable --- third party code */
 // @ts-nocheck
 import type { Get } from "type-fest";
