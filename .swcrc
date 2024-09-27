@@ -1,9 +1,6 @@
 {
   "$schema": "https://swc.rs/schema.json",
-  "exclude": [
-    ".*\\.d.ts$"
-    ".*\\.test.ts$"
-  ],
+  "exclude": [".*\\.d.ts$", ".*\\.test.ts$"],
   "sourceMaps": true,
   "module": {
     "type": "commonjs",
