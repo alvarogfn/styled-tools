@@ -7,19 +7,19 @@
     "type": "git",
     "url": "git+https://github.com/alvarogfn/styled-bettertools"
   },
-  "main": "dist/index.js",
+  "main": "dist/cjs/index.js",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
   "source": "src/index.ts",
   "exports": {
     ".": {
       "import": "./dist/index.js",
-      "require": "./dist/index.js",
+      "require": "./dist/cjs/index.js",
       "types": "./dist/index.d.ts"
     },
     "./*": {
       "import": "./dist/tools/*/*.js",
-      "require": "./dist/tools/*/*.js",
+      "require": "./dist/cjs/tools/*/*.js",
       "types": "./dist/tools/*/*.d.ts"
     }
   },
@@ -51,7 +51,8 @@
     "format": "pnpm lint:fix && prettier --write .",
     "clean": "rimraf dist",
     "dev": "tsc --watch --project tsconfig.build.json",
-    "build": "pnpm clean && tsc --project tsconfig.build.json",
+    "build": "pnpm clean && tsc --project tsconfig.build.json && pnpm build:cjs",
+    "build:cjs": "npx swc src -d dist/cjs --strip-leading-paths -s --copy-files",
     "test": "vitest",
     "test:watch": "vitest --watch",
     "test:coverage": "vitest --coverage",
@@ -73,6 +74,7 @@
     "dot-prop": "9.0.0"
   },
   "devDependencies": {
+    "@swc/cli": "0.4.1-nightly.20240914",
     "@changesets/changelog-github": "0.5.0",
     "@changesets/cli": "2.27.8",
     "@eslint-community/eslint-plugin-eslint-comments": "4.4.0",
