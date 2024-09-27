@@ -1,0 +1,21 @@
+{
+  "$schema": "https://swc.rs/schema.json",
+  "exclude": [
+    ".*\\.d.ts$"
+    ".*\\.test.ts$"
+  ],
+  "sourceMaps": true,
+  "module": {
+    "type": "commonjs",
+    "resolveFully": true
+  },
+  "jsc": {
+    "parser": {
+      "syntax": "typescript"
+    },
+    "baseUrl": "./",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  }
+}
