@@ -1,5 +1,11 @@
 # styled-bettertools
 
+## 0.3.0
+
+### Minor Changes
+
+- [#13](https://github.com/alvarogfn/styled-bettertools/pull/13) [`2553d5b`](https://github.com/alvarogfn/styled-bettertools/commit/2553d5bd465af05c21c9cd8c667274ff1db6ab94) Thanks [@alvarogfn](https://github.com/alvarogfn)! - Remove dot-prop as a dependency
+
 ## 0.2.2
 
 ### Patch Changes
