@@ -1,5 +1,11 @@
 # styled-bettertools
 
+## 0.2.2
+
+### Patch Changes
+
+- [#11](https://github.com/alvarogfn/styled-bettertools/pull/11) [`c2c9653`](https://github.com/alvarogfn/styled-bettertools/commit/c2c965340b9a8616f2336e60925da1c3885ed4a3) Thanks [@alvarogfn](https://github.com/alvarogfn)! - add commonjs distributables
+
 ## 0.2.1
 
 ### Patch Changes
