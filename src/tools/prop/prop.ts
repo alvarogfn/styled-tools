@@ -1,6 +1,6 @@
 import type { GenericFunction, StringAutoComplete } from "@/types/utility.js";
 
-import { getProperty } from "dot-prop";
+import { getProperty } from "@/helpers/get-property.js";
 
 /**
  * A utility function to retrieve a property value from a component's props.
