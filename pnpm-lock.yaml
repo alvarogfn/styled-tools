@@ -7,10 +7,6 @@ settings:
 importers:
 
   .:
-    dependencies:
-      dot-prop:
-        specifier: 9.0.0
-        version: 9.0.0
     devDependencies:
       '@changesets/changelog-github':
         specifier: 0.5.0
@@ -78,6 +74,9 @@ importers:
       ts-patch:
         specifier: 3.2.1
         version: 3.2.1
+      type-fest:
+        specifier: 4.26.1
+        version: 4.26.1
       typescript:
         specifier: 5.5.4
         version: 5.5.4
@@ -1197,10 +1196,6 @@ packages:
   dir-glob@3.0.1:
     resolution: {integrity: sha512-WkrWp9GR4KXfKGYzOLmTuGVi1UWFfws377n9cc55/tb6DuqyF6pcQ5AbiHEshaDpY9v6oaSr2XCDidGmMwdzIA==}
     engines: {node: '>=8'}
-
-  dot-prop@9.0.0:
-    resolution: {integrity: sha512-1gxPBJpI/pcjQhKgIU91II6Wkay+dLcN3M6rf2uwP8hRur3HtQXjVrdAK3sjC0piaEuxzMwjXChcETiJl47lAQ==}
-    engines: {node: '>=18'}
 
   dotenv@8.6.0:
     resolution: {integrity: sha512-IrPdXQsk2BbzvCBGBOTmmSH5SodmqZNt4ERAZDmW4CT+tL8VtvinqywuANaFu4bOMWki16nqf0e4oC0QIaDr/g==}
@@ -3717,10 +3712,6 @@ snapshots:
   dir-glob@3.0.1:
     dependencies:
       path-type: 4.0.0
-
-  dot-prop@9.0.0:
-    dependencies:
-      type-fest: 4.26.1
 
   dotenv@8.6.0: {}
 
