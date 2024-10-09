@@ -137,6 +137,30 @@ const Button = styled.button`
 `;
 ```
 
+### deepProp
+
+A utility function to retrieve a property value from a component's props that deeply resolves each property in the path.
+
+#### Parameters
+
+- `path` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)**
+- `defaultValue` **any**
+
+#### Examples
+
+```javascript
+import styled from "styled-components";
+import { deepProp } from "styled-bettertools"; // or "styled-bettertools/deep-prop"
+
+const Button = styled.button`
+  color: ${deepProp("color.primary", "red")};
+`;
+
+function App() {
+  return <Button color={{ primary: () => "blue" }} />;
+}
+```
+
 ### theme
 
 Same as `prop`, except that it returns `props.theme[path]` instead of
