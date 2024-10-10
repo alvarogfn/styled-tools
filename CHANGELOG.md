@@ -1,5 +1,11 @@
 # styled-bettertools
 
+## 0.4.0
+
+### Minor Changes
+
+- [#24](https://github.com/alvarogfn/styled-bettertools/pull/24) [`c1cdc3d`](https://github.com/alvarogfn/styled-bettertools/commit/c1cdc3daa235094be82cae7dbacc1cbb768fd28a) Thanks [@alvarogfn](https://github.com/alvarogfn)! - Add deep-prop, deep-theme, deep-palette (thanks [@jtmthf](https://github.com/jtmthf))
+
 ## 0.3.0
 
 ### Minor Changes
