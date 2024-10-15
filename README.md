@@ -1,7 +1,7 @@
 # styled-bettertools 💅
 
 [![NPM version](https://img.shields.io/npm/v/styled-bettertools.svg?style=flat-square)](https://npmjs.org/package/styled-bettertools)
-[![NPM downloads](https://img.shields.io/npm/dm/styled-bettertools.svg?style=flat-square)](https://npmjs.org/package/styled-tools)
+[![NPM downloads](https://img.shields.io/npm/dm/styled-bettertools.svg?style=flat-square)](https://npmjs.org/package/styled-bettertools)
 
 This project is a fork of styled-tools, which is no longer maintained. The main goal of this project is to keep the same API and add new features and improvements.
 
