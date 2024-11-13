@@ -1,5 +1,11 @@
 # styled-bettertools
 
+## 0.4.1
+
+### Patch Changes
+
+- [#38](https://github.com/alvarogfn/styled-bettertools/pull/38) [`2cd2246`](https://github.com/alvarogfn/styled-bettertools/commit/2cd22460a5d51bf70412849faee111d1042b2387) Thanks [@dependabot](https://github.com/apps/dependabot)! - chore(deps-dev): bump @eslint/js from 9.12.0 to 9.14.0
+
 ## 0.4.0
 
 ### Minor Changes
