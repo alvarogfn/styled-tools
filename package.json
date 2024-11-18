@@ -84,7 +84,7 @@
     "eslint-config-prettier": "9.1.0",
     "eslint-define-config": "2.1.0",
     "eslint-plugin-array-func": "5.0.2",
-    "eslint-plugin-no-secrets": "1.0.2",
+    "eslint-plugin-no-secrets": "1.1.2",
     "eslint-plugin-perfectionist": "3.9.1",
     "eslint-plugin-promise": "7.1.0",
     "eslint-plugin-regexp": "2.6.0",
