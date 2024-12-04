@@ -1,5 +1,11 @@
 # styled-bettertools
 
+## 0.5.1
+
+### Patch Changes
+
+- [`830890d`](https://github.com/alvarogfn/styled-bettertools/commit/830890d6fb5a17db3fa34117cd2e32f42737d5d3) Thanks [@alvarogfn](https://github.com/alvarogfn)! - bump some packages versions
+
 ## 0.5.0
 
 ### Minor Changes
