@@ -17,7 +17,7 @@ import { parseObject } from "./utils.js";
  *   background: ${withProp(["foo", "bar"], (foo, bar) => `${foo}${bar}`)};
  * `;
  */
-export function withProp<Props, Interpolation>(
+export function withProp<Props, Interpolation = any>(
   needles: Needles<Props>,
   fn: (...args: any[]) => Interpolation,
 ): GenericFunction<Props> {

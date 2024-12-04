@@ -26,7 +26,7 @@ import { resolveValue } from "@/helpers/resolve-value.js";
  *
  * @see {@link https://github.com/alvarogfn/styled-bettertools/blob/main/src/tools/prop/prop.ts prop}
  */
-export function deepProp<Props, Path = StringAutoComplete<keyof Props>>(
+export function deepProp<Props, Path = StringAutoComplete<Props>>(
   path: Path,
   defaultValue?: any,
 ): GenericFunction<Props> {

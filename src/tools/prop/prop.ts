@@ -18,7 +18,7 @@ import { getProperty } from "@/helpers/get-property.js";
  *   color: ${prop("color.primary", "red")};
  * `;
  */
-export function prop<Props, Path = StringAutoComplete<keyof Props>>(
+export function prop<Props, Path = StringAutoComplete<Props>>(
   path: Path,
   defaultValue?: unknown,
 ): GenericFunction<Props> {
