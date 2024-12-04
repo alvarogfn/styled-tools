@@ -1,6 +1,6 @@
 {
   "name": "styled-bettertools",
-  "version": "0.4.1",
+  "version": "0.5.0",
   "description": "A fork of styled-tools with more utilities for css-in-js",
   "license": "MIT",
   "repository": {

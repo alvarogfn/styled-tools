@@ -1,5 +1,27 @@
 # styled-bettertools
 
+## 0.5.0
+
+### Minor Changes
+
+- [#48](https://github.com/alvarogfn/styled-bettertools/pull/48) [`a46f637`](https://github.com/alvarogfn/styled-bettertools/commit/a46f637cdb4d1de100d098650b0cc1883e13cf4a) Thanks [@alvarogfn](https://github.com/alvarogfn)! - add nested paths autocomplete with dot notation:
+
+  ```ts
+  // given the following type:
+  type Props = {
+    theme: {
+      colors: {
+        primary: string;
+        secondary: string;
+      };
+    };
+    active: true;
+  };
+  // autocomplete will give you the following options:
+  // theme.colors.primary
+  // theme.colors.secondary
+  ```
+
 ## 0.4.1
 
 ### Patch Changes
