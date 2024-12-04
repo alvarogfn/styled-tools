@@ -27,7 +27,7 @@ import { deepProp } from "@/tools/deep-prop/deep-prop.js";
  */
 export function deepTheme<
   Theme extends Props extends { theme: object } ? Props["theme"] : object,
-  Path = StringAutoComplete<keyof Theme>,
+  Path = StringAutoComplete<Theme>,
   Props = object,
 >(path: Path, defaultValue?: unknown): GenericFunction<Props> {
   return (props) => {

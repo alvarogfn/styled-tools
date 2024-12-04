@@ -24,9 +24,9 @@ type ThemeProperty<Theme> = { theme: Theme };
  * @param [defaultValue] - The default value to return if the path does not exist.
  */
 export function theme<
-  Theme extends Props extends { theme: object } ? Props["theme"] : object,
-  Path = StringAutoComplete<keyof Theme>,
-  Props = object,
+  Props,
+  Theme = Props extends { theme: object } ? Props["theme"] : object,
+  Path = StringAutoComplete<Theme>,
 >(path: Path, defaultValue?: unknown): GenericFunction<Props> {
   return (props: Props) => {
     const { theme } = Object.assign({ theme: {} } as ThemeProperty<Theme>, props);
